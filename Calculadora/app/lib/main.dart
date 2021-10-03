@@ -25,7 +25,16 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      appBar: AppBar(title: Text('Calculadora')),
+      body: Column(
+        children: <Widget>[
+          Container(
+            alignment: Alignment.centerRight,]
+            padding: EdgeInsets.fromLTRB(10,20,10,0),
+            child: Text("0", style: TextStyle(fontsize: 38.0),),
+          )
+        ],
+      )
     );
   }
 }
