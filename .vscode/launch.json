@@ -8,7 +8,8 @@
             "name": "app",
             "cwd": "Calculadora\\app",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "flutterMode": "debug"
         },
         {
             "name": "app (profile mode)",
