@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:math_expressions/math_expressions.dart';
 
 void main() {
   runApp(Calculadora());
@@ -21,30 +22,47 @@ class SimpleCalculator extends StatefulWidget {
   _SimpleCalculatorState createState() => _SimpleCalculatorState();
 }
 
-
-
-
-
 class _SimpleCalculatorState extends State<SimpleCalculator> {
+  String equation = "0";
+  String result = "0";
+  String expression = "";
+  double equationFontSize = 38.0, resultFontSize = 48.0;
 
-String equation = "0";
-String result = "0";
-String expression = "";
-double equationFontSize = 38.0, resultFontSize = 48.0;
-buttonPressed(String buttonText) {
-  setState(() {
-    if (buttonText == "C") {
-    } else if (buttonText == "<=") {
-    } else if (buttonText == "=") {
-    } else {
-      if(equation =="0"){
+  buttonPressed(String buttonText) {
+    setState(() {
+      if (buttonText == "C") {
+        equation = "0";
+        result = "0";
+      } else if (buttonText == "<=") {
+        equation = equation.substring(0, equation.length - 1);
+        if (equation == "") {
+          equation = "0";
+        }
+      } else if (buttonText == "=") {
+        expression = equation;
+        expression = expression.replaceAll('/', '/');       
+        expression = expression.replaceAll('*', '*');
         
-      }
-      equation = equation + buttonText;
-    }
-  });
-}
+        try {
 
+          Parser p = Parser();
+          Expression exp = p.parse(expression);
+          ContextModel cm = ContextModel();
+          result = '${exp.evaluate(EvaluationType.REAL, cm)}';
+
+        } catch (e) {
+          result = "Error";
+        }
+      } else {
+        if (equation == "0") {
+          equation = buttonText;
+        } else {
+          equation = equation + buttonText;
+        }
+       
+      }
+    });
+  }
 
   Widget buildButton(
       String buttonText, double buttonHeight, Color buttonColor) {
@@ -76,6 +94,7 @@ buttonPressed(String buttonText) {
         body: Column(
           children: <Widget>[
             Container(
+              
               alignment: Alignment.centerRight,
               padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
               child: Text(
@@ -84,6 +103,7 @@ buttonPressed(String buttonText) {
               ),
             ),
             Container(
+              
               alignment: Alignment.centerRight,
               padding: EdgeInsets.fromLTRB(10, 30, 10, 0),
               child: Text(
