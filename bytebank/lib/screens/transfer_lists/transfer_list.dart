@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:bytebank/main.dart';
-
+import 'package:bytebank/screens/transfer_forms/transfer_form.dart';
+import 'package:bytebank/widget/nav_drawer.dart';
 
 
 class ListaTransferencias extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavDrawer(),
       appBar: AppBar(
         title: Text('Transferências'),
       ),

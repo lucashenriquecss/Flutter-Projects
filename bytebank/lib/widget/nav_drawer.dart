@@ -1,6 +1,7 @@
+import 'package:bytebank/screens/home/home.dart';
+import 'package:bytebank/screens/transfer_forms/transfer_form.dart';
 import 'package:flutter/material.dart';
-import 'package:bytebank/widgets/listatransferencia.dart';
-
+import 'package:bytebank/screens/transfer_lists/transfer_list.dart';
 
 class NavDrawer extends StatelessWidget {
   @override
@@ -13,34 +14,40 @@ class NavDrawer extends StatelessWidget {
             child: Text(
               'Nome do usuario',
               style: TextStyle(color: Colors.white, fontSize: 25),
-              
             ),
             decoration: BoxDecoration(
-                color: Colors.green,
-                
-                ),
+              color: Colors.green,
+            ),
           ),
           ListTile(
             leading: Icon(Icons.home),
             title: Text('Home'),
-            onTap: () => {},
+            onTap: () => {
+              Navigator.of(context).push(MaterialPageRoute(builder: (c) {
+                return Home();
+              }))
+            },
           ),
           ListTile(
             leading: Icon(Icons.monetization_on),
-            title: Text('Lista de transferência'),
-            onTap: () => {ListaTransferencias(), Navigator.of(context).pop()},
-          ),       
+            title: Text('Tranferir'),
+            onTap: () => {
+              Navigator.of(context).push(MaterialPageRoute(builder: (c) {
+                return FormularioTransferencia();
+              }))
+            },
+          ),
           ListTile(
             leading: Icon(Icons.monetization_on),
             title: Text('Extrato'),
-            onTap: () => {Navigator.of(context).pop()},
-          ),       
+            onTap: () => {Navigator.of(context).push(MaterialPageRoute(builder: (c){
+              return ListaTransferencias();
+            }))},
+          ),
           ListTile(
             leading: Icon(Icons.exit_to_app),
             title: Text('Sair'),
-            onTap: () => {
-                           
-              Navigator.of(context).pop()},
+            onTap: () => {Navigator.of(context).pop()},
           ),
         ],
       ),
