@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bytebank/widgets/navdrawer.dart';
-
+import 'package:bytebank/widgets/listatransferencia.dart';
 void main() => runApp(BytebankApp());
 
 class BytebankApp extends StatelessWidget {
@@ -8,7 +8,7 @@ class BytebankApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: FormularioTransferencia(),
+        body: ListaTransferencias(),
       ),
     );
   }
@@ -28,29 +28,43 @@ class FormularioTransferencia extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
-          Editor(_controladorCampoNumeroConta, 'Numero da conta', '0000'),
-          Editor(_controladorCampoValor, 'Valor', '0.00', Icons.monetization_on),
+           Editor(
+              controlador: _controladorCampoNumeroConta,
+              dica: '0000',
+              rotulo: 'Número da conta', 
+              icone: Icons.monetization_on,            
+            ),
+           Editor(
+              dica: '0.00',
+              controlador: _controladorCampoValor,
+              rotulo: 'Valor',
+              icone: Icons.monetization_on,
+            ),
           
           ElevatedButton(
             child: Text('Confirmar'),
-            onPressed: () {
-              debugPrint('clicou no confirmar');
-              final int? numeroConta =
-                  int.tryParse(_controladorCampoNumeroConta.text);
-              final double? valor =
-                  double.tryParse(_controladorCampoValor.text);
-
-              if (numeroConta != null && valor != null) {
-                final transferenciaFeita = Transferencia(valor, numeroConta);
-                debugPrint('$transferenciaFeita');
-              }
-            },
+            onPressed: () => _criaTransferencia(),
+            
           ),
         ],
       ),
     );
   }
+  
+  void _criaTransferencia() {
+    final int? numeroConta =
+        int.tryParse(_controladorCampoNumeroConta.text);
+    final double? valor =
+        double.tryParse(_controladorCampoValor.text);
+
+    if (numeroConta != null && valor != null) {
+      final transferenciaCriada = Transferencia(valor, numeroConta);
+      debugPrint('$transferenciaCriada');
+    }
+  }
 }
+
+
 
 class Editor extends StatelessWidget {
   final TextEditingController controlador;
@@ -58,7 +72,7 @@ class Editor extends StatelessWidget {
   final String dica;
   final IconData icone;
 
-  Editor({this.controlador, this.rotulo, this.dica, this.icone});
+   Editor({required this.controlador,  required this.rotulo, required this.dica, required this.icone});
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +83,11 @@ class Editor extends StatelessWidget {
         style: TextStyle(
           fontSize: 24.0,
         ),
-        decoration: InputDecoration(icon:Icon(icone),labelText: rotulo, hintText: dica),
+        decoration: InputDecoration(
+          icon: icone != null ? Icon(icone):null,
+          labelText: rotulo, 
+          hintText: dica,
+          ),
         keyboardType: TextInputType.number,
       ),
     );

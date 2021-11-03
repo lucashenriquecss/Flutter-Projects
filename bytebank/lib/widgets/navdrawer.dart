@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:bytebank/widgets/listatransferencia.dart';
 
 
 class NavDrawer extends StatelessWidget {
@@ -27,8 +27,8 @@ class NavDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.monetization_on),
-            title: Text('Transferência'),
-            onTap: () => {Navigator.of(context).pop()},
+            title: Text('Lista de transferência'),
+            onTap: () => {ListaTransferencias(), Navigator.of(context).pop()},
           ),       
           ListTile(
             leading: Icon(Icons.monetization_on),
@@ -38,7 +38,9 @@ class NavDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.exit_to_app),
             title: Text('Sair'),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () => {
+                           
+              Navigator.of(context).pop()},
           ),
         ],
       ),
