@@ -9,7 +9,7 @@ class ListaTransferencias extends StatelessWidget {
     return Scaffold(
       drawer: NavDrawer(),
       appBar: AppBar(
-        title: Text('Transferências'),
+        title: Text('Extrato de transferências'),
       ),
       body: Column(
         children: <Widget>[
