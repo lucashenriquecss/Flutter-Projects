@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_app/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   static String tag = 'login-page';
@@ -48,16 +49,22 @@ class _LoginPageState extends State<LoginPage> {
         child: MaterialButton(
           minWidth: 200.0,
           height: 42.0,
-          onPressed: () {},
-          color: Colors.lightBlueAccent,
+          onPressed: () {
+            Navigator.of(context).pushNamed(HomePage.tag);
+          },
+          color: Colors.deepOrange,
           child: Text('Entrar', style: TextStyle(color: Colors.white)),
         ),
       ),
     );
     final forgotLabel = FlatButton(
-      child: Text('Esqueceu a sua senha?',style: TextStyle(color: Colors.black54),
+      child: Text(
+        'Esqueceu a sua senha?',
+        style: TextStyle(color: Colors.black54),
       ),
-      onPressed: () {},
+      onPressed: () {
+        
+      },
     );
     return Scaffold(
       backgroundColor: Colors.white,
