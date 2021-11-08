@@ -3,15 +3,12 @@ import 'package:bytebank/screens/transfer_forms/transfer_form.dart';
 import 'package:bytebank/widget/nav_drawer.dart';
 
 class ListaTransferencias extends StatefulWidget {
-
   final List<Transferencia> _transferencias = List.empty(growable: true);
   @override
   State<ListaTransferencias> createState() => _ListaTransferenciasState();
 }
 
 class _ListaTransferenciasState extends State<ListaTransferencias> {
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,10 +32,14 @@ class _ListaTransferenciasState extends State<ListaTransferencias> {
             return FormularioTransferencia();
           }));
           future.then((transferenciaRecebida) {
-            debugPrint('$transferenciaRecebida');
-            if(transferenciaRecebida != null) {
-                widget._transferencias.add(transferenciaRecebida);
-            }           
+            Future.delayed(Duration(seconds: 1), () {
+              debugPrint('$transferenciaRecebida');
+              if (transferenciaRecebida != null) {
+                setState(() {
+                  widget._transferencias.add(transferenciaRecebida);
+                });
+              }
+            });
           });
         },
       ),

@@ -16,7 +16,7 @@ class NavDrawer extends StatelessWidget {
               style: TextStyle(color: Colors.white, fontSize: 25),
             ),
             decoration: BoxDecoration(
-              color: Colors.green,
+              color: Colors.deepOrange,
             ),
           ),
           ListTile(
@@ -28,15 +28,7 @@ class NavDrawer extends StatelessWidget {
               }))
             },
           ),
-          ListTile(
-            leading: Icon(Icons.monetization_on),
-            title: Text('Tranferir'),
-            onTap: () => {
-              Navigator.of(context).push(MaterialPageRoute(builder: (c) {
-                return FormularioTransferencia();
-              }))
-            },
-          ),
+          
           ListTile(
             leading: Icon(Icons.monetization_on),
             title: Text('Extrato'),
