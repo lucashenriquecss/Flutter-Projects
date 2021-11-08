@@ -2,8 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:bytebank/screens/transfer_forms/transfer_form.dart';
 import 'package:bytebank/widget/nav_drawer.dart';
 
+class ListaTransferencias extends StatefulWidget {
 
-class ListaTransferencias extends StatelessWidget {
+  final List<Transferencia> _transferencias = List.empty(growable: true);
+  @override
+  State<ListaTransferencias> createState() => _ListaTransferenciasState();
+}
+
+class _ListaTransferenciasState extends State<ListaTransferencias> {
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,19 +19,33 @@ class ListaTransferencias extends StatelessWidget {
       appBar: AppBar(
         title: Text('Extrato de transferências'),
       ),
-      body: Column(
-        children: <Widget>[
-          ItemTransferencia(Transferencia(100.0, 1000)),
-          ItemTransferencia(Transferencia(200.0, 2000)),
-          ItemTransferencia(Transferencia(300.0, 3000)),
-        ],
+      body: ListView.builder(
+        itemCount: widget._transferencias.length,
+        itemBuilder: (context, index) {
+          final transferencia = widget._transferencias[index];
+          return ItemTransferencia(transferencia);
+        },
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add), onPressed: (){},
+        child: Icon(Icons.add),
+        onPressed: () {
+          // future, server para chamar um callback para um possivel resposta
+          final Future<Transferencia?> future =
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return FormularioTransferencia();
+          }));
+          future.then((transferenciaRecebida) {
+            debugPrint('$transferenciaRecebida');
+            if(transferenciaRecebida != null) {
+                widget._transferencias.add(transferenciaRecebida);
+            }           
+          });
+        },
       ),
     );
   }
 }
+
 class ItemTransferencia extends StatelessWidget {
   final Transferencia _transferencia;
 
