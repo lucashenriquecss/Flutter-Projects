@@ -1,4 +1,5 @@
 import 'package:bytebank/screens/home/home.dart';
+import 'package:bytebank/screens/login/login_screen.dart';
 import 'package:bytebank/screens/transfer_forms/transfer_form.dart';
 import 'package:flutter/material.dart';
 import 'package:bytebank/screens/transfer_lists/transfer_list.dart';
@@ -28,18 +29,23 @@ class NavDrawer extends StatelessWidget {
               }))
             },
           ),
-          
           ListTile(
             leading: Icon(Icons.monetization_on),
             title: Text('Extrato'),
-            onTap: () => {Navigator.of(context).push(MaterialPageRoute(builder: (c){
-              return ListaTransferencias();
-            }))},
+            onTap: () => {
+              Navigator.of(context).push(MaterialPageRoute(builder: (c) {
+                return ListaTransferencias();
+              }))
+            },
           ),
           ListTile(
             leading: Icon(Icons.exit_to_app),
             title: Text('Sair'),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () => {
+              Navigator.of(context).push(MaterialPageRoute(builder: (c) {
+                return LoginPage();
+              }))
+            },
           ),
         ],
       ),
