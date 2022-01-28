@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
+
 class Categories extends StatefulWidget {
   @override
   _CategoriesState createState() => _CategoriesState();
 }
 
 class _CategoriesState extends State<Categories> {
-  List<String> categories = ["Lanches", "Bebidas", "Sobremesas", "Massas"];
+  List<String> categories = ["Geral","Lanches", "Bebidas", "Sobremesas"];
   // By default our first item will be selected
   int selectedIndex = 0;
   @override
