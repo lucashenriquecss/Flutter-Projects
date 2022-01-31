@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
-
+import 'package:ecommerce_app/models/Products.dart';
 
 class Categories extends StatefulWidget {
+  
   @override
   _CategoriesState createState() => _CategoriesState();
 }
 
 class _CategoriesState extends State<Categories> {
-  List<String> categories = ["Geral","Lanches", "Bebidas", "Sobremesas"];
+  List<String> categories = ["Geral", "Lanches", "Bebidas", "Sobremesas"];
   // By default our first item will be selected
   int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical:20.0),
+      padding: const EdgeInsets.symmetric(vertical: 20.0),
       child: SizedBox(
         height: 25,
         child: ListView.builder(
@@ -29,7 +30,9 @@ class _CategoriesState extends State<Categories> {
     return GestureDetector(
       onTap: () {
         setState(() {
-          selectedIndex = index;
+          
+            selectedIndex = index;
+          
         });
       },
       child: Padding(

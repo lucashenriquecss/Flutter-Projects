@@ -1,3 +1,8 @@
+
+import 'package:ecommerce_app/screens/details/components/add_product.dart';
+import 'package:ecommerce_app/screens/details/components/description.dart';
+import 'package:ecommerce_app/screens/details/components/favorite_btn.dart';
+import 'package:ecommerce_app/screens/details/components/image_product.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce_app/models/Products.dart';
 
@@ -32,18 +37,17 @@ class BodyDetails extends StatelessWidget {
                     ),
                   ),
                   child: Column(
-                    children: <Widget>[
-                      //ColorAndSize(product: product),
+                    children: <Widget>[                    
                       SizedBox(height: 20.0 / 2),
-                     // Description(product: product),
+                      Description(product: product),
                       SizedBox(height: 20.0 / 2),
-                     // CounterWithFavBtn(),
+                      FavoriteBtn(),
                       SizedBox(height: 20.0 / 2),
-                     // AddToCart(product: product)
+                      AddToCart(product: product)
                     ],
                   ),
                 ),
-                //ProductTitleWithImage(product: product)
+                ImageProduct(product: product)
               ],
             ),
           )

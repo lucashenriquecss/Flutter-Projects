@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class ItemCard extends StatelessWidget {
   final Product product;
-  final Function press;
+  final VoidCallback  press;
   const ItemCard({
     Key? key,
     required this.product,
@@ -16,12 +16,11 @@ class ItemCard extends StatelessWidget {
       onTap: press,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-       
         children: <Widget>[
           Expanded(
             child: Container(
               padding: EdgeInsets.all(20.0),
-              decoration: BoxDecoration(
+              decoration: BoxDecoration(              
                 color: product.color,
                 borderRadius: BorderRadius.circular(16),
               ),
@@ -36,21 +35,20 @@ class ItemCard extends StatelessWidget {
             child: Text(
               product.title,
               style: TextStyle(color: Colors.black),
-            ),                      
+            ),
           ),
           Text(
             "\$${product.price}",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          IconButton(  
-            icon: Icon(  
+          IconButton(
+            icon: Icon(
               Icons.shopping_cart,
               color: Colors.black,
-              ),
-            onPressed: () {  },
+            ),
+            onPressed: () {},
           ),
         ],
-        
       ),
     );
   }

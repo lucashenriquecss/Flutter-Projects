@@ -18,7 +18,7 @@ class DetailScreen extends StatelessWidget {
   }
    AppBar Navbar(BuildContext context) {
     return AppBar(
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(icon: Icon(
           Icons.arrow_back
@@ -26,14 +26,7 @@ class DetailScreen extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
         ),
 
-        actions: <Widget>[
-          IconButton(  
-            icon: Icon(  
-              Icons.search,
-              color: Colors.black,
-              ),
-            onPressed: () {  },
-          ),
+        actions: <Widget>[        
           IconButton(  
           icon: Icon(  
             Icons.shopping_cart,
