@@ -32,7 +32,9 @@ dependencies:
 
     
   get: ^4.6.1
-
+  get_storage: ^2.0.3
+  validatorless: ^1.2.1
+  intl: ^0.17.0
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
@@ -60,9 +62,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/images/
+    
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -78,14 +80,14 @@ flutter:
   fonts:
      - family: mplus1
        fonts:
-         - asset: assets/fonts/mplus1/MPLUS1-Regular.ttf
-           style: normal
-         - asset: assets/fonts/mplus1/MPLUS1-Medium.ttf
-           weight: 500
-         - asset: assets/fonts/mplus1/MPLUS1-Bold.ttf
-           weight: 700
-         - asset: assets/fonts/mplus1/MPLUS1-ExtraBold.ttf
-           weight: 800
+        - asset: assets/fonts/mplus1/MPLUS1-Regular.ttf
+          style: normal
+        - asset: assets/fonts/mplus1/MPLUS1-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/mplus1/MPLUS1-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/mplus1/MPLUS1-ExtraBold.ttf
+          weight: 800
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
