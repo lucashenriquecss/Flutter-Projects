@@ -17,7 +17,7 @@ class SplashPage extends StatelessWidget {
         child: Stack(
           children: [
             Align(
-              alignment: Alignment.center,
+              alignment: Alignment.bottomCenter,
               child: SizedBox(
                   width: context.width,
                   child: Image.asset(
@@ -34,7 +34,7 @@ class SplashPage extends StatelessWidget {
                   ),
                   Image.asset('assets/images/logo.png'),
                   SizedBox(
-                    height: 60,
+                    height: 200,
                   ),
                   VakinhaButton(
                       label: 'Acessar',
